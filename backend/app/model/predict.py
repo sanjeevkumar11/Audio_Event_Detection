@@ -2,7 +2,6 @@ import joblib
 import numpy as np
 from app.utils.audio_processing import extract_features
 
-# Load model once (important for performance)
 model = joblib.load("app/model/model.pkl")
 
 def predict_audio(file_path):

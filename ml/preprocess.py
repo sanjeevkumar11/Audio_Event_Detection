@@ -1,8 +1,7 @@
 import os
 from backend.app.utils.audio_processing import extract_features
 
-# test with one audio file
-file_path = r"D:\audio-event-detection\ml\dataset\test.wav"  # put any .wav file here
+file_path = r"D:\audio-event-detection\ml\dataset\test.wav"  
 
 features = extract_features(file_path)
 

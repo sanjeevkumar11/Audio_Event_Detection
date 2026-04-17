@@ -124,7 +124,6 @@ const styles = {
     opacity: 0.85,
   },
 
-  // RIGHT SIDE BACKGROUND (WARM)
   right: {
     flex: 1,
     background: "#f5f3ef", // warm beige
@@ -133,7 +132,6 @@ const styles = {
     alignItems: "center",
   },
 
-  // CARD
   card: {
     width: "380px",
     background: "#ffffff",

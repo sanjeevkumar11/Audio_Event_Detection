@@ -11,16 +11,10 @@ from sklearn.svm import SVC
 from backend.app.utils.audio_processing import extract_features
 
 
-# ==============================
-# PATHS
-# ==============================
 DATA_PATH = r"D:\audio-event-detection\ml\dataset\ESC-50\audio"
 CSV_PATH = r"D:\audio-event-detection\ml\dataset\ESC-50\meta\esc50.csv"
 
 
-# ==============================
-# LOAD DATA
-# ==============================
 print("Loading dataset...")
 df = pd.read_csv(CSV_PATH)
 
@@ -28,9 +22,6 @@ features = []
 labels = []
 
 
-# ==============================
-# FEATURE EXTRACTION
-# ==============================
 print("Extracting features... (this may take time)")
 
 for index, row in df.iterrows():
@@ -46,18 +37,12 @@ for index, row in df.iterrows():
 print("Feature extraction complete")
 
 
-# ==============================
-# CONVERT TO NUMPY
-# ==============================
 X = np.array(features)
 y = np.array(labels)
 
 print("Feature shape:", X.shape)
 
 
-# ==============================
-# TRAIN-TEST SPLIT
-# ==============================
 print("Splitting data...")
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -69,9 +54,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 
-# ==============================
-# SCALING (IMPORTANT)
-# ==============================
 print("Scaling features...")
 
 scaler = StandardScaler()
@@ -79,9 +61,6 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 
-# ==============================
-# HYPERPARAMETER TUNING (SVM)
-# ==============================
 print("Tuning model (GridSearch)...")
 
 param_grid = {
@@ -105,9 +84,6 @@ model = grid.best_estimator_
 print("Best Parameters:", grid.best_params_)
 
 
-# ==============================
-# CROSS VALIDATION SCORE
-# ==============================
 print("Running cross-validation...")
 
 cv_scores = cross_val_score(model, X_train, y_train, cv=5)
@@ -115,9 +91,6 @@ cv_scores = cross_val_score(model, X_train, y_train, cv=5)
 print("CV Accuracy:", cv_scores.mean())
 
 
-# ==============================
-# FINAL EVALUATION
-# ==============================
 print("Evaluating on test set...")
 
 y_pred = model.predict(X_test)
@@ -129,9 +102,6 @@ print("\nClassification Report:\n")
 print(classification_report(y_test, y_pred))
 
 
-# ==============================
-# SAVE MODEL + SCALER
-# ==============================
 print("Saving model...")
 
 os.makedirs("backend/app/model", exist_ok=True)
