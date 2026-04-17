@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# ML
+*.pkl
+dataset/
+
+# Node
+node_modules/
+
+# Env
+.env
